@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/The-React-Cave/static/css/main.db798329.css",
+    "main.js": "/The-React-Cave/static/js/main.afc3160d.js",
+    "static/js/787.8c0bada9.chunk.js": "/The-React-Cave/static/js/787.8c0bada9.chunk.js",
+    "index.html": "/The-React-Cave/index.html",
+    "main.db798329.css.map": "/The-React-Cave/static/css/main.db798329.css.map",
+    "main.afc3160d.js.map": "/The-React-Cave/static/js/main.afc3160d.js.map",
+    "787.8c0bada9.chunk.js.map": "/The-React-Cave/static/js/787.8c0bada9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db798329.css",
+    "static/js/main.afc3160d.js"
+  ]
+}
