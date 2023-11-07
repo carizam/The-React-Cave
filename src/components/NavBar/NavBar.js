@@ -4,18 +4,31 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom"; // Importa Link de React Router Dom
 
 function NavBar() {
   return (
     <>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
-          <Navbar.Brand href="#home">The React Cave</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            The React Cave
+          </Navbar.Brand>{" "}
+          {/* Utiliza Link para navegar a la página de inicio */}
           <Nav className="ms-auto">
-            <Nav.Link href="#inicio">Inicio</Nav.Link>
-            <Nav.Link href="#comics">Cómics</Nav.Link>
-            <Nav.Link href="#contact">Contacto</Nav.Link>
-            <Nav.Link href="#Carrito">
+            <Nav.Link as={Link} to="/">
+              Inicio
+            </Nav.Link>{" "}
+            {/* Utiliza Link para navegar a la página de inicio */}
+            <Nav.Link as={Link} to="/comics">
+              Cómics
+            </Nav.Link>{" "}
+            {/* Utiliza Link para navegar a la página de cómics */}
+            <Nav.Link as={Link} to="/contact">
+              Contacto
+            </Nav.Link>{" "}
+            {/* Utiliza Link para navegar a la página de contacto */}
+            <Nav.Link as={Link} to="/carrito">
               <CartWidget />
             </Nav.Link>
           </Nav>

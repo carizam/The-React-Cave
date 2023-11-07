@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom"; // Importa useParams para acceder a los parámetros de la URL
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
+  const { categoryId } = useParams(); // Accede al parámetro categoryId de la URL
+
   return (
     <div
       style={{
@@ -10,7 +13,11 @@ const ItemListContainer = ({ greeting }) => {
       }}
     >
       <h2>La mejor tienda de Cómics</h2>
-      <p>{greeting}</p>
+      <p>
+        {categoryId
+          ? `Encuentra cómics de la categoría ${categoryId}`
+          : "Encuentra todos los cómics."}
+      </p>
     </div>
   );
 };
