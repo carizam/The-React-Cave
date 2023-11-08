@@ -20,14 +20,22 @@ function NavBar() {
               Inicio
             </Nav.Link>{" "}
             {/* Utiliza Link para navegar a la página de inicio */}
-            <Nav.Link as={Link} to="/comics">
-              Cómics
+            <Nav.Link as={Link} to="/dc">
+              DC
             </Nav.Link>{" "}
             {/* Utiliza Link para navegar a la página de cómics */}
-            <Nav.Link as={Link} to="/contact">
-              Contacto
+            <Nav.Link as={Link} to="/marvel">
+              Marvel
             </Nav.Link>{" "}
             {/* Utiliza Link para navegar a la página de contacto */}
+            <Nav.Link as={Link} to="/dark-horse">
+              Dark Horse
+            </Nav.Link>{" "}
+            {/* Utiliza Link para navegar a la página de cómics */}
+            <Nav.Link as={Link} to="/otros">
+              Otros
+            </Nav.Link>{" "}
+            {/* Utiliza Link para navegar a la página de cómics */}
             <Nav.Link as={Link} to="/carrito">
               <CartWidget />
             </Nav.Link>

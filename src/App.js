@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ProductDetails from "./components/ProductDetails/ProductsDetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             }
           />
           <Route path="/The-React-Cave" element={<ItemListContainer />} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
         </Routes>
       </Router>
     </div>
