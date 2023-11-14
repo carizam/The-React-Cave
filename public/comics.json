@@ -1,0 +1,51 @@
+[
+  {
+    "productId": 1,
+    "productName": "Dark Crisis #1",
+    "productImage": "https://m.media-amazon.com/images/I/91WRLLf5hqL._SL1500_.jpg",
+    "productDescription": "Dark Crisis on infinite earths - New DC Comics event",
+    "productPrice": 100
+  },
+  {
+    "productId": 2,
+    "productName": "Dark Crisis #2",
+    "productImage": "https://m.media-amazon.com/images/I/91tlSvstVvL._SL1500_.jpg",
+    "productDescription": "Dark Crisis on infinite earths - New DC Comics event",
+    "productPrice": 200
+  },
+  {
+    "productId": 3,
+    "productName": "Dark Crisis #3",
+    "productImage": "https://m.media-amazon.com/images/I/91pEPX8CgrL._SL1500_.jpg",
+    "productDescription": "Dark Crisis on infinite earths - New DC Comics event",
+    "productPrice": 200
+  },
+  {
+    "productId": 4,
+    "productName": "Dark Crisis #4",
+    "productImage": "https://m.media-amazon.com/images/I/91O64ylwizL._SL1500_.jpg",
+    "productDescription": "Dark Crisis on infinite earths - New DC Comics event",
+    "productPrice": 200
+  },
+  {
+    "productId": 5,
+    "productName": "Dark Crisis #5",
+    "productImage": "https://m.media-amazon.com/images/I/91gy2fU9yIL._SL1500_.jpg",
+    "productDescription": "Dark Crisis on infinite earths - New DC Comics event",
+    "productPrice": 200
+  },
+  {
+    "productId": 6,
+    "productName": "Dark Crisis #6",
+    "productImage": "https://m.media-amazon.com/images/I/91K-noqUTZL._SL1500_.jpg",
+    "productDescription": "Dark Crisis on infinite earths - New DC Comics event",
+    "productPrice": 200
+  },
+  {
+    "productId": 7,
+    "productName": "Dark Crisis #7",
+    "productImage": "https://m.media-amazon.com/images/I/81y993v746L._SL1500_.jpg",
+    "productDescription": "Dark Crisis on infinite earths - New DC Comics event",
+    "productPrice": 200
+  }
+]

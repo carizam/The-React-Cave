@@ -1,35 +1,38 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import Product from "../Product/Products";
+// ItemListContainer.js
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Row, Col } from "react-bootstrap";
+import Products from "../Product/Products.js";
 
 function ItemListContainer() {
-  const [products, setProducts] = useState([]);
   const { categoryId } = useParams();
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("products.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
-  }, []);
+    fetch("/comics.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (categoryId) {
+          setProducts(
+            data.filter((product) => product.category === categoryId)
+          );
+        } else {
+          setProducts(data);
+        }
+      })
+      .catch((error) => {
+        console.log("Fetch error: ", error);
+      });
+  }, [categoryId]);
 
   return (
-    <div style={{ background: "#404040" }}>
-      <div
-        style={{
-          backgroundColor: "lightblue",
-          padding: "10px",
-          border: "1px solid #ccc",
-        }}
-      >
-        <h2>La mejor tienda de Cómics</h2>
+    <div>
+      <div>
         <p>
           {categoryId
             ? `Encuentra cómics de la categoría ${categoryId}`
@@ -38,8 +41,9 @@ function ItemListContainer() {
       </div>
       <Row>
         {products.map((product) => (
-          <Col sm={4} key={product.id}>
-            <Product product={product} />
+          <Col sm={4} key={product.productId}>
+            {/* Pasa la información del cómic al componente Products */}
+            <Products product={product} />
           </Col>
         ))}
       </Row>

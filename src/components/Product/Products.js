@@ -1,22 +1,16 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import ProductInfo from "../ProductDetails/ProductInfo";
 
-function Product({ product }) {
+function Products({ product }) {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={product.image} />
-      <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>{product.description}</Card.Text>
-        <Card.Text>{product.price}</Card.Text>
-        <Button variant="primary" as={Link} to={`/product/${product.id}`}>
-          Ver Detalles
-        </Button>
-      </Card.Body>
-    </Card>
+    <div>
+      <Link to={`/product/${product.productId}`}>
+        {/* Pasa la información del cómic al componente ProductInfo */}
+        <ProductInfo product={product} />
+      </Link>
+    </div>
   );
 }
 
-export default Product;
+export default Products;

@@ -1,3 +1,4 @@
+// CartWidget.js
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,7 @@ function CartWidget() {
   useEffect(() => {
     const obtenerCantidadDeCarrito = async () => {
       try {
-        const respuesta = await fetch("/api/cart");
+        const respuesta = await fetch("/comics.json");
         const data = await respuesta.json();
 
         setComicsEnCarrito(data.cantidad);
