@@ -1,3 +1,4 @@
+// App.js
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -12,13 +13,8 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <ItemListContainer greeting="Encuentra todos los cómics." />
-            }
-          />
-          <Route path="/The-React-Cave" element={<ItemListContainer />} />
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/:category" element={<ItemListContainer />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
         </Routes>
       </Router>
