@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
+import ProductModal from "./ProductModal";
 
 function ProductDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(1);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -32,8 +33,8 @@ function ProductDetails() {
     fetchProductDetails();
   }, [productId]);
 
-  const handleIncreaseQuantity = () => setQuantity(quantity + 1);
-  const handleDecreaseQuantity = () => setQuantity(Math.max(quantity - 1, 1));
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   if (!product) {
     return <div>Cargando...</div>;
@@ -62,19 +63,16 @@ function ProductDetails() {
         <Card.Text>{`Precio: $${product.price.toLocaleString(
           "es-CO"
         )}`}</Card.Text>
-        <Card.Text>Cantidad: {quantity}</Card.Text>
-        <Button variant="outline-secondary" onClick={handleDecreaseQuantity}>
-          -
-        </Button>{" "}
-        <Button variant="outline-secondary" onClick={handleIncreaseQuantity}>
-          +
-        </Button>
-        <Button
-          variant="primary"
-          onClick={() => alert("Producto agregado al carrito")}
-        >
-          Agregar al Carrito
-        </Button>
+        <div className="mt-3">
+          <Button variant="primary" onClick={handleShowModal}>
+            Agregar al Carrito
+          </Button>
+        </div>
+        <ProductModal
+          show={showModal}
+          handleClose={handleCloseModal}
+          product={product}
+        />
       </Card.Body>
     </Card>
   );

@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { NavLink } from "react-router-dom";
+import CartWidget from "../CartWidget/CartWidget";
 
 function NavBar() {
   return (
@@ -27,6 +28,9 @@ function NavBar() {
             </Nav.Link>
             <Nav.Link as={NavLink} to="/otros">
               Otros
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/carrito">
+              <CartWidget />
             </Nav.Link>
           </Nav>
         </Container>
