@@ -29,7 +29,7 @@ function NavBar() {
             <Nav.Link as={NavLink} to="/otros">
               Otros
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/carrito">
+            <Nav.Link as={NavLink} to="/cart">
               <CartWidget />
             </Nav.Link>
           </Nav>

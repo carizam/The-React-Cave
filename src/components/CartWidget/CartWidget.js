@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../../context/CartContext"; // Importa useCart
+import { useNavigate } from "react-router-dom";
 
 function CartWidget() {
-  const [comicsEnCarrito, setComicsEnCarrito] = useState(0);
+  const { cartItems } = useCart(); // Utiliza useCart para acceder al estado del carrito
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const obtenerCantidadDeCarrito = async () => {
-      try {
-        const respuesta = await fetch("/api/cart");
-        const data = await respuesta.json();
+  // Calcula el total de productos en el carrito
+  const totalProductos = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
-        setComicsEnCarrito(data.cantidad);
-      } catch (error) {
-        console.error("Error al obtener la cantidad del carrito: ", error);
-      }
-    };
-
-    obtenerCantidadDeCarrito();
-  }, []);
+  const handleCartClick = () => {
+    navigate("/cart"); // Redirige a la página del carrito
+  };
 
   return (
-    <span>
+    <span onClick={handleCartClick} style={{ cursor: "pointer" }}>
       <FontAwesomeIcon icon={faCartShopping} />
-      <span className="cart-count">{comicsEnCarrito}</span>
+      {totalProductos > 0 && (
+        <span className="cart-count">{totalProductos}</span>
+      )}
     </span>
   );
 }
