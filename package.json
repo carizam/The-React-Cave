@@ -1,5 +1,6 @@
 {
-  "name": "the",
+  "homepage": "https://github.com/carizam/The-React-Cave",
+  "name": "the-react-cave",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
