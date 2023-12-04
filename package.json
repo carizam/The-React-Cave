@@ -1,8 +1,8 @@
 {
-  "homepage": "https://github.com/carizam/The-React-Cave",
   "name": "the-react-cave",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://carizam.github.io/The-React-Cave/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
