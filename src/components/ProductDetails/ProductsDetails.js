@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Card, Toast } from "react-bootstrap";
-import { useCart } from "../../context/CartContext"; // Asegúrate de importar useCart
+import { useCart } from "../../context/CartContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function ProductDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [showToast, setShowToast] = useState(false); // Estado para el mensaje Toast
-  const { addToCart } = useCart(); // Usa el contexto del carrito
+  const [showToast, setShowToast] = useState(false);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProductDetails = async () => {

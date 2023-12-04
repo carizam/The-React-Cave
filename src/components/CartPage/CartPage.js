@@ -19,7 +19,6 @@ function CartPage() {
             <Row>
               <Col md={2}>
                 <Image src={item.image} fluid rounded />{" "}
-                {/* Muestra la imagen del producto */}
               </Col>
               <Col md={4}>{item.name}</Col>
               <Col md={2}>Cantidad: {item.quantity}</Col>
@@ -37,7 +36,6 @@ function CartPage() {
         ))}
       </ListGroup>
       <Button onClick={handleCheckout}>Ir a Pagar</Button>{" "}
-      {/* Ejemplo de uso de handleCheckout */}
     </Container>
   );
 }

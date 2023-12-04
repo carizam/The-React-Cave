@@ -6,7 +6,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ProductDetails from "./components/ProductDetails/ProductsDetails";
 import { CartProvider } from "./context/CartContext";
 import "./App.css";
-import CartPage from "./components/CartPage/CartPage"; // Asegúrate de importar CartPage
+import CartPage from "./components/CartPage/CartPage";
 
 function App() {
   return (
