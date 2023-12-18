@@ -3,36 +3,29 @@ import { useParams } from "react-router-dom";
 import { Button, Card, Toast } from "react-bootstrap";
 import { useCart } from "../../context/CartContext";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-function ProductDetails() {
-  const { productId } = useParams();
+const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [showToast, setShowToast] = useState(false);
+  const { productId } = useParams();
   const { addToCart } = useCart();
 
   useEffect(() => {
-    const fetchProductDetails = async () => {
-      try {
-        const response = await fetch("/products.json");
+    const db = getFirestore();
+    const productRef = doc(db, "products", productId);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        const selectedProduct = data.find((p) => p.id === Number(productId));
-
-        if (selectedProduct) {
-          setProduct(selectedProduct);
+    getDoc(productRef)
+      .then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+          setProduct({ id: docSnapshot.id, ...docSnapshot.data() });
         } else {
-          console.error(`Product with id ${productId} not found`);
+          console.log("No documento encontrado!");
         }
-      } catch (error) {
-        console.error("Error fetching product details: ", error);
-      }
-    };
-
-    fetchProductDetails();
+      })
+      .catch((error) => {
+        console.error("Error al obtener documento: ", error);
+      });
   }, [productId]);
 
   const handleAddToCart = () => {
@@ -86,6 +79,6 @@ function ProductDetails() {
       </Toast>
     </div>
   );
-}
+};
 
 export default ProductDetails;

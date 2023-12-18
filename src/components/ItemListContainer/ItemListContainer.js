@@ -3,46 +3,29 @@ import Product from "../Product/Products";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { getFirestore, collection, query, getDocs } from "firebase/firestore";
 
-function ItemListContainer() {
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("products.json", {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        });
+    const db = getFirestore();
+    const productsCollection = collection(db, "products");
+    const q = query(productsCollection);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        console.log("Categoría recibida desde la URL:", category);
-        console.log("Productos originales:", data);
-
-        // Filtra los productos según la categoría seleccionada
-        const filteredProducts = category
-          ? data.filter(
-              (product) =>
-                product.publisher.toLowerCase() === category.toLowerCase()
-            )
-          : data;
-
-        setProducts(filteredProducts);
-      } catch (error) {
-        console.error("Error fetching products: ", error);
-      }
-    };
-
-    fetchProducts();
-  }, [category]);
+    getDocs(q)
+      .then((querySnapshot) => {
+        const items = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProducts(items);
+      })
+      .catch((error) => {
+        console.error("Error al obtener documentos: ", error);
+      });
+  }, []);
 
   return (
     <div style={{ background: "#404040" }}>
@@ -69,6 +52,6 @@ function ItemListContainer() {
       </Row>
     </div>
   );
-}
+};
 
 export default ItemListContainer;
