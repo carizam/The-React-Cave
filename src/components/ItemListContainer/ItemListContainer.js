@@ -3,7 +3,13 @@ import Product from "../Product/Products";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { getFirestore, collection, query, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  query,
+  getDocs,
+  where,
+} from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -11,8 +17,13 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     const db = getFirestore();
-    const productsCollection = collection(db, "products");
-    const q = query(productsCollection);
+    let q;
+    if (category) {
+      const productsRef = collection(db, "products");
+      q = query(productsRef, where("publisher", "==", category));
+    } else {
+      q = query(collection(db, "products"));
+    }
 
     getDocs(q)
       .then((querySnapshot) => {
@@ -25,7 +36,7 @@ const ItemListContainer = () => {
       .catch((error) => {
         console.error("Error al obtener documentos: ", error);
       });
-  }, []);
+  }, [category]);
 
   return (
     <div style={{ background: "#404040" }}>

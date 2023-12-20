@@ -62,6 +62,7 @@ const ProductDetails = () => {
           <Card.Text>{`Precio: $${product.price.toLocaleString(
             "es-CO"
           )}`}</Card.Text>
+          <Card.Text>Cantidad disponible: {product.quantity}</Card.Text>
           <Button variant="primary" onClick={handleAddToCart}>
             Agregar al Carrito
           </Button>
